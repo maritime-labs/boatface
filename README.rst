@@ -1,0 +1,108 @@
+#################
+NMEA Kindle panel
+#################
+
+
+*****
+About
+*****
+
+The `Amazon Kindle`_ is an `electronic ink`_ e-book device, perfectly suitable
+for building a panel to display NMEA telemetry data received via UDP port 10110
+over Wi-Fi.
+
+
+********
+Features
+********
+
+- Receive and parse NMEA sentences
+- Render display bitmap as PNG
+
+
+*****
+Setup
+*****
+::
+
+    pip install --upgrade nmea-kindle-panel
+
+To install the latest development version from the repository, invoke::
+
+    pip install --upgrade git+git@git.cicer.de:karatefish/nmea-kindle-panel.git
+
+Sandbox::
+
+    git clone git@git.cicer.de:karatefish/nmea-kindle-panel.git
+    cd nmea-kindle-panel
+    make test
+
+
+*****
+Usage
+*****
+
+::
+
+    # Submit telemetry messages in NMEA-0183 format to UDP broadcast.
+    calypso-anemometer fake --subscribe --rate=hz_8 --target=udp+broadcast+nmea0183://255.255.255.255:10110
+
+    # Listen on the network for NMEA-0183 messages.
+    nmea-kindle-panel log --source=udp+broadcast+nmea0183://0.0.0.0:10110
+
+    # Start user interface service.
+    nmea-kindle-panel ui-service --source=udp+broadcast+nmea0183://0.0.0.0:10110
+
+An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
+
+    $IIVWR,154.0,L,11.06,N,5.69,M,20.48,K*65
+
+
+****************
+Acknowledgements
+****************
+
+- Kudos to Holger Marseille for creating the user interface artwork and for providing
+  general guidance and vision.
+
+
+*******************
+Project information
+*******************
+
+Contributions
+=============
+
+Any kind of contribution, feedback or patches are very much welcome! Just `create
+an issue`_ or submit a patch if you think we should include a new feature, or to
+report or fix a bug.
+
+Development
+===========
+
+In order to setup a development environment on your workstation, please head over
+to the `development sandbox`_ documentation. When you see the software tests succeed,
+you should be ready to start hacking.
+
+Resources
+=========
+
+- `Source code repository <https://github.com/daq-tools/nmea-kindle-panel>`_
+- `Documentation <https://github.com/daq-tools/nmea-kindle-panel/blob/main/README.rst>`_
+- `Python Package Index (PyPI) <https://pypi.org/project/nmea-kindle-panel/>`_
+
+License
+=======
+
+The project is licensed under the terms of the AGPL license.
+
+
+
+.. _Amazon Kindle: https://en.wikipedia.org/wiki/Amazon_Kindle
+.. _development sandbox: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/sandbox.rst
+.. _electronic ink: https://en.wikipedia.org/wiki/E_Ink
+.. _OpenCPN: https://opencpn.org/
+.. _OpenPlotter: https://open-boat-projects.org/en/openplotter/
+.. _preflight checks: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/preflight.rst
+.. _production: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/production.rst
+.. _SignalK: https://github.com/SignalK/signalk-server
