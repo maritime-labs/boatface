@@ -68,6 +68,7 @@ setup(
         ],
     },
     install_requires=[
+        "asyncio-dgram>2,<3",
         "pynmea2>1,<2",
         "click<9",
         "dataclasses;python_version<='3.6'",
