@@ -12,6 +12,7 @@ import typing as t
 from collections import OrderedDict
 
 import click
+import pkg_resources
 from pynmea2 import NMEASentence
 
 
@@ -87,3 +88,7 @@ def nmea_asdict(sentence: NMEASentence) -> t.Dict:
         value = getattr(sentence, name)
         data[name] = value
     return data
+
+
+def get_asset_path(filename):
+    return pkg_resources.resource_filename("nmea_kindle_panel.assets", filename)
