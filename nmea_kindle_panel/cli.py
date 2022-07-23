@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 @click.option("--debug", is_flag=True, required=False, help="Enable debug messages.")
 @click.pass_context
 def cli(ctx, verbose, debug):
-    setup_logging(level=logging.INFO)
+    setup_logging(level=logging.DEBUG)
 
 
 @click.command()
