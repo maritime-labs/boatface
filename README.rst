@@ -50,7 +50,10 @@ Usage
     # Listen on the network for NMEA-0183 messages.
     nmea-kindle-panel log --source=udp+broadcast+nmea0183://0.0.0.0:10110
 
-    # Start user interface service.
+    # Run demo user interface
+    python -m nmea_kindle_panel.display
+
+    # Start user interface service. (not implemented yet)
     nmea-kindle-panel ui-service --source=udp+broadcast+nmea0183://0.0.0.0:10110
 
 An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
@@ -62,8 +65,8 @@ An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
 Acknowledgements
 ****************
 
-- Kudos to Holger Marseille for creating the user interface artwork and for providing
-  general guidance and vision.
+- Thanks a stack to Holger Marseille for creating the user interface artwork, for
+  conceiving the core rendering routines, and for providing general guidance and vision.
 
 
 *******************
