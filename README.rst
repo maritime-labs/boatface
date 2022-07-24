@@ -18,6 +18,7 @@ Features
 
 - Receive and parse NMEA sentences
 - Render user interface as PIL image
+- Display user interface on different backends: PNG, `pyglet`_, `PySDL2`_, `eips`_
 
 
 *****
@@ -47,9 +48,17 @@ Terminal::
 
 GUI::
 
+    # Display demo data in preview application, single-shot.
+    nmea-kindle-panel ui --source=demo:// --display=viewer
 
+    # Display demo data on the user interface, using Pyglet.
+    nmea-kindle-panel ui --source=demo:// --display=pyglet
 
+    # Display demo data on the user interface, using SDL.
+    nmea-kindle-panel ui --source=demo:// --display=sdl
 
+    # Display demo data on the user interface, using EIPS.
+    nmea-kindle-panel ui --source=demo:// --display=eips
 
 An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
 
@@ -104,9 +113,13 @@ The project is licensed under the terms of the GNU AGPL license.
 
 .. _Amazon Kindle: https://en.wikipedia.org/wiki/Amazon_Kindle
 .. _development sandbox: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/sandbox.rst
+.. _eips: https://wiki.mobileread.com/wiki/Eips
 .. _electronic ink: https://en.wikipedia.org/wiki/E_Ink
+.. _FBInk: https://github.com/NiLuJe/FBInk
 .. _OpenCPN: https://opencpn.org/
 .. _OpenPlotter: https://open-boat-projects.org/en/openplotter/
 .. _preflight checks: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/preflight.rst
 .. _production: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/production.rst
+.. _pyglet: https://pyglet.readthedocs.io/
+.. _PySDL2: https://pysdl2.readthedocs.io/
 .. _SignalK: https://github.com/SignalK/signalk-server
