@@ -2,9 +2,8 @@
 # (c) 2022 Holger Marseille <ml@argonauta.studio>
 # (c) 2022 Andreas Motl <andreas.motl@panodata.org>
 # License: GNU Affero General Public License, Version 3
+import io
 import logging
-import subprocess
-import tempfile
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -51,15 +50,9 @@ EMPTY_VALUE = "-"
 logger = logging.getLogger(__name__)
 
 
-class PngRenderer:
-
-    DELETE_TMPFILES = True
-
-    # TODO: Parameterize.
-    # OUTPUT_KIND = "eips"
-    OUTPUT_KIND = "pil"
-
-    def __init__(self):
+class FrameRenderer:
+    def __init__(self, landscape: bool = False):
+        self.landscape = landscape
         self.IMAGEFILE_MAIN = get_asset_path("main.png")
         self.IMAGEFILE_AWA = get_asset_path("awa.png")
         self.IMAGEFILE_TWA = get_asset_path("twa.png")
@@ -68,7 +61,7 @@ class PngRenderer:
         self.image = None
         self.canvas = None
 
-    def render(self, values: RenderValues):
+    def render(self, values: RenderValues) -> Image:
         logger.info(f"Rendering:  {values}")
         self.image = Image.open(self.IMAGEFILE_MAIN)  # Image.new('RGBA', ( IMG_W,IMG_H ), color='#f00')
         self.canvas = ImageDraw.Draw(self.image)
@@ -76,26 +69,18 @@ class PngRenderer:
         self.draw_common(values)
         self.draw_wind(values)
 
-        image: Image = self.image
-        if self.OUTPUT_KIND == "eips":
-            image = image.transpose(Image.Transpose.ROTATE_90)
-            self.output_eips(image)
-        if self.OUTPUT_KIND == "pil":
-            self.output_pil(image)
+        if self.landscape:
+            image = self.image.transpose(Image.Transpose.ROTATE_90)
+        else:
+            image = self.image
+        return image
 
-    def output_eips(self, image: Image):
-        with tempfile.NamedTemporaryFile(suffix=".png", delete=self.DELETE_TMPFILES) as tmp:
-            image.save(tmp)
-            logger.info(f"Saved frame to {tmp.name}")
-            render_command = f"/usr/sbin/eips -g {tmp.name}"
-            logger.info(f"Running command {render_command}")
-            try:
-                subprocess.check_call(render_command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-            except:
-                logger.exception("Failed rendering with eips")
-
-    def output_pil(self, image: Image):
-        image.show("Foo")
+    def render_png(self, values: RenderValues) -> io.BytesIO:
+        image = self.render(values)
+        buffer = io.BytesIO()
+        image.save(fp=buffer, format="png")
+        buffer.seek(0)
+        return buffer
 
     def draw_common(self, values: RenderValues):
         self.canvas.text((IMG_W / 4, TYPE_Y_0), values.sog, font=FONT_BIG, align="center", fill=FNT_CLR, anchor="mb")
@@ -143,8 +128,9 @@ class PngRenderer:
 def demo_single_png():
     data = DataValues(cog=42.42, dbt=84.84, sog=4.3)
     tplvars = RenderValues.from_data(data)
-    renderer = PngRenderer()
-    renderer.render(tplvars)
+    renderer = FrameRenderer()
+    image = renderer.render(tplvars)
+    image.show()
 
 
 if __name__ == "__main__":

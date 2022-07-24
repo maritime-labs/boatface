@@ -7,6 +7,7 @@ in progress
 ===========
 - UDP receiver based on ``asyncio-dgram`` and ``pynmea2``
 - Add data model classes and core display rendering routines
+- Add display subsystem, using one of PNG, pyglet, PySDL2, eips
 
 
 2022-07-xx 0.0.0

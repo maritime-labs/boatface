@@ -75,6 +75,10 @@ setup(
         "dataclasses;python_version<='3.6'",
     ],
     extras_require={
+        "ui": [
+            "pyglet<2",
+            "pysdl2<1",
+        ],
         "test": [
             "pytest<8",
             "pytest-cov<4",

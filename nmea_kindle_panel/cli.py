@@ -6,8 +6,10 @@ import sys
 
 import click
 
+from nmea_kindle_panel.app import DisplayBackend
 from nmea_kindle_panel.core import UdpNmeaMessageReceiver
-from nmea_kindle_panel.util import make_sync, setup_logging
+from nmea_kindle_panel.model import DataValues
+from nmea_kindle_panel.util import EnumChoice, make_sync, setup_logging
 
 logger = logging.getLogger(__name__)
 
@@ -35,4 +37,34 @@ async def log(ctx, source: str):
     print("Ready.", file=sys.stderr)
 
 
+@click.command()
+@click.option("--source", type=str, required=True, help="Receive telemetry data from source.")
+@click.option(
+    "--display",
+    type=EnumChoice(DisplayBackend, case_sensitive=False),
+    required=True,
+    help="Render display with selected backend",
+)
+@click.option(
+    "--landscape", is_flag=True, type=bool, required=False, default=False, help="Render output in landscape orientation"
+)
+@click.pass_context
+@make_sync
+async def ui(ctx, source: str, display: DisplayBackend, landscape: bool):
+    if source == "demo://":
+        data = DataValues(cog=42.42, dbt=84.84, sog=4.3)
+    else:
+        raise NotImplementedError(f"Selected data source {source} not implemented")
+
+    if landscape and display not in [DisplayBackend.VIEWER, DisplayBackend.EIPS]:
+        logger.warning(f"Option --landscape has no effect with display backend {display}")
+
+    display_backend_class = DisplayBackend.get_implementer(display)
+    print("display_backend_class:", display_backend_class)
+
+    app = display_backend_class(data=data, landscape=landscape)
+    app.run()
+
+
 cli.add_command(log, name="log")
+cli.add_command(ui, name="ui")
