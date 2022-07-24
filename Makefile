@@ -1,4 +1,4 @@
-$(eval venv     := .venv)
+$(eval venv         := .venv)
 $(eval pip          := $(venv)/bin/pip)
 $(eval python       := $(venv)/bin/python)
 $(eval black        := $(venv)/bin/black)
