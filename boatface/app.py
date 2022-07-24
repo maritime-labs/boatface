@@ -10,8 +10,9 @@ from abc import abstractmethod
 from enum import Enum
 from typing import Optional
 
-from nmea_kindle_panel.model import DataValues, RenderValues
-from nmea_kindle_panel.render import IMG_H, IMG_W, FrameRenderer
+from boatface import __apptitle__, __version__
+from boatface.model import DataValues, RenderValues
+from boatface.render import IMG_H, IMG_W, FrameRenderer
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +32,6 @@ class BaseApplication:
     Bundle display adapter, frame renderer, and data into a common container.
     """
 
-    TITLE = "NMEA Kindle Panel"
     WIDTH = IMG_W
     HEIGHT = IMG_H
 
@@ -43,6 +43,10 @@ class BaseApplication:
     @abstractmethod
     def run(self):
         raise NotImplementedError("The subclass needs to implement this method")
+
+    @property
+    def title(self):
+        return f"{__apptitle__} {__version__}"
 
     def get_dimensions(self):
         width = self.WIDTH
@@ -112,7 +116,7 @@ class PygletApplication(BaseApplication):
 
         # GUI
         width, height = self.get_dimensions()
-        window = pyglet.window.Window(width=width, height=height, caption=self.TITLE)
+        window = pyglet.window.Window(width=width, height=height, caption=self.title)
 
         @window.event
         def on_draw():
@@ -182,7 +186,7 @@ class SDLApplication(BaseApplication):
         sdl2.ext.init()
 
         width, height = self.get_dimensions()
-        window = sdl2.ext.Window(self.TITLE, size=(width, height))
+        window = sdl2.ext.Window(self.title, size=(width, height))
         window.show()
 
         factory = sdl2.ext.SpriteFactory(sdl2.ext.SOFTWARE)

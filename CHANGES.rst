@@ -1,6 +1,6 @@
-###########################
-nmea-kindle-panel changelog
-###########################
+##################
+Boatface changelog
+##################
 
 
 in progress

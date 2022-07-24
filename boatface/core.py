@@ -6,13 +6,14 @@ import logging
 import asyncio_dgram
 import pynmea2
 
-from nmea_kindle_panel.util import nmea_asdict
+from boatface.util import nmea_asdict
 
 logger = logging.getLogger(__name__)
 
 
 class UdpNmeaMessageReceiver:
     async def read_udp(self):
+        # TODO: Parameterize hostname and port.
         stream = await asyncio_dgram.bind(("0.0.0.0", 10110))
         while True:
             data, remote_addr = await stream.recv()

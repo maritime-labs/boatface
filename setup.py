@@ -7,18 +7,18 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, "README.rst")).read()
 
 setup(
-    name="nmea-kindle-panel",
+    name="boatface",
     version="0.0.0",
     author="Andreas Motl",
     author_email="andreas.motl@panodata.org",
-    url="https://git.cicer.de/karatefish/nmea-kindle-panel",
     description="Converge a kindle into a display panel for NMEA and SignalK telemetry data",
+    url="https://github.com/maritime-labs/boatface",
     long_description=README,
-    download_url="https://pypi.org/project/nmea-kindle-panel/",
+    download_url="https://pypi.org/project/boatface/",
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        "nmea_kindle_panel": [
+        "boatface": [
             "assets/*.png",
             "assets/*.otf",
         ],
@@ -71,7 +71,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "nmea-kindle-panel = nmea_kindle_panel.cli:cli",
+            "boatface = boatface.cli:cli",
         ],
     },
     install_requires=[

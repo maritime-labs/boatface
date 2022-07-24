@@ -7,8 +7,8 @@ import logging
 
 from PIL import Image, ImageDraw, ImageFont
 
-from nmea_kindle_panel.model import DataValues, RenderValues
-from nmea_kindle_panel.util import get_asset_path, setup_logging
+from boatface.model import DataValues, RenderValues
+from boatface.util import get_asset_path, setup_logging
 
 # Fonts
 FONT_FILE = get_asset_path("display.otf")
@@ -134,7 +134,7 @@ if __name__ == "__main__":
     """
     Synopsis::
 
-        python -m nmea_kindle_panel.render
+        python -m boatface.render
     """
     setup_logging(level=logging.DEBUG)
     demo_single_png()
