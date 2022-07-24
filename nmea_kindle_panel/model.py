@@ -4,6 +4,7 @@
 # License: GNU Affero General Public License, Version 3
 import dataclasses
 import logging
+from enum import Enum
 from typing import Optional
 
 logger = logging.getLogger(__name__)
@@ -69,3 +70,29 @@ class RenderValues:
             kwargs[field.name] = value
 
         return cls(**kwargs)
+
+
+class DisplayBackend(Enum):
+    """
+    Offer programmatic symbols for selecting the display backend.
+    """
+
+    VIEWER = "viewer"
+    PYGLET = "pyglet"
+    SDL = "sdl"
+    EIPS = "eips"
+
+    @classmethod
+    def get_implementer(cls, backend):
+        from nmea_kindle_panel.app import EipsApplication, PygletApplication, SDLApplication, ViewerApplication
+
+        if backend == cls.VIEWER:
+            return ViewerApplication
+        elif backend == cls.PYGLET:
+            return PygletApplication
+        elif backend == cls.SDL:
+            return SDLApplication
+        elif backend == cls.EIPS:
+            return EipsApplication
+        else:
+            raise NotImplementedError(f"Display backend {backend} not implemented")
