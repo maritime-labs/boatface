@@ -1,3 +1,26 @@
+.. image:: https://github.com/maritime-labs/boatface/workflows/Tests/badge.svg
+    :target: https://github.com/maritime-labs/boatface/actions?workflow=Tests
+
+.. image:: https://codecov.io/gh/maritime-labs/boatface/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/maritime-labs/boatface
+
+.. image:: https://pepy.tech/badge/boatface/month
+    :target: https://pypi.org/project/boatface/
+
+.. image:: https://img.shields.io/pypi/v/boatface.svg
+    :target: https://pypi.org/project/boatface/
+
+.. image:: https://img.shields.io/pypi/status/boatface.svg
+    :target: https://pypi.org/project/boatface/
+
+.. image:: https://img.shields.io/pypi/pyversions/boatface.svg
+    :target: https://pypi.org/project/boatface/
+
+.. image:: https://img.shields.io/pypi/l/boatface.svg
+    :target: https://github.com/maritime-labs/boatface/blob/main/LICENSE
+
+|
+
 ######################
 Maritime Labs Boatface
 ######################
@@ -7,15 +30,19 @@ Maritime Labs Boatface
 About
 *****
 
-Software to drive an instrumentation panel for displaying NMEA telemetry data
-received via UDP port 10110 over Wi-Fi.
+An instrumentation panel for displaying NMEA and SignalK telemetry data,
+specifically on `electronic ink`_ displays.
+
+NMEA-0183 telemetry data is received on UDP port 10110.
 
 
 .. note::
 
     Please note this is ALPHA quality software.
 
-    - Many functionalities still need to be implemented.
+    - Essentially, the program currently only demonstrates two features
+      separately: Telemetry receiver vs. Rendering and display.
+    - Many details will still need to be implemented.
     - There might be dragons.
 
 
@@ -30,7 +57,7 @@ Device support
 ==============
 
 - Desktop: Linux, macOS, Windows
-- e-book devices using `electronic ink`_ displays:
+- E-book devices using `electronic ink`_ displays:
   `Amazon Kindle`_, `Kobo eReader`_, `Tolino eReader`_
 
 
@@ -53,6 +80,7 @@ Usage
 Terminal::
 
     # Submit telemetry messages in NMEA-0183 format to UDP broadcast.
+    pip install calypso-anemometer
     calypso-anemometer fake --subscribe --rate=hz_8 --target=udp+broadcast+nmea0183://255.255.255.255:10110
 
     # Listen on the network for NMEA-0183 messages and display them on the terminal.
@@ -78,14 +106,9 @@ An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
 
 More options::
 
-****************
-Acknowledgements
-****************
     # Enable verbose output.
     boatface --verbose ui --source=demo:// --display=pyglet
 
-- Thanks a stack to Holger Marseille for creating the user interface artwork, for
-  conceiving the core rendering routines, and for providing general guidance and vision.
 
 
 *******************
