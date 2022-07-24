@@ -110,6 +110,22 @@ More options::
     boatface --verbose ui --source=demo:// --display=pyglet
 
 
+**************
+Other projects
+**************
+
+- SignalK Instrument package
+  https://github.com/mxtommy/Kip
+
+- Kindle eink UI for SignalK data
+  https://github.com/ieb/signalk-eink
+
+- iKommunicate-Kindle
+  https://github.com/tkurki/sk-on-kindle
+
+- Using Tolino eBook Reader as Display for SignalK
+  https://github.com/koileLab/SignalkTolino
+
 
 *******************
 Project information
