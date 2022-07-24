@@ -10,34 +10,10 @@ from abc import abstractmethod
 from enum import Enum
 from typing import Optional
 
-from nmea_kindle_panel.display import IMG_H, IMG_W, FrameRenderer
 from nmea_kindle_panel.model import DataValues, RenderValues
+from nmea_kindle_panel.render import IMG_H, IMG_W, FrameRenderer
 
 logger = logging.getLogger(__name__)
-
-
-class DisplayBackend(Enum):
-    """
-    Offer programmatic symbols for selecting the display backend.
-    """
-
-    VIEWER = "viewer"
-    PYGLET = "pyglet"
-    SDL = "sdl"
-    EIPS = "eips"
-
-    @classmethod
-    def get_implementer(cls, backend):
-        if backend == cls.VIEWER:
-            return ViewerApplication
-        elif backend == cls.PYGLET:
-            return PygletApplication
-        elif backend == cls.SDL:
-            return SDLApplication
-        elif backend == cls.EIPS:
-            return EipsApplication
-        else:
-            raise NotImplementedError(f"Display backend {backend} not implemented")
 
 
 class InteractionOutcome(Enum):
