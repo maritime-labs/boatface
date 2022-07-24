@@ -18,8 +18,8 @@ Goals: Separation of concerns, Modularization, Framework layout, Python asyncio,
 - [x] Demo: Render all missing fields (AWA, TWA) and add corresponding assets
 - [x] Package building, including assets
 - [x] Naming things. ``boatface`` it is.
-- [o] Docs: Install/sandbox, Etymology
-- [o] CI/GHA setup
+- [x] Docs: Install/sandbox, Etymology
+- [x] CI/GHA setup
 - [o] Connect data receiver with display
 - [o] Release 0.1.0
 
