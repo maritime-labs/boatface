@@ -14,6 +14,7 @@ Goals: Separation of concerns, Modularization, Python asyncio, Desktop compatibi
 - [x] Display subsystem
 - [x] Demo: Rendering, continuously
 - [x] CLI access to demo modes
+- [x] Document ``--landscape`` option
 - [o] Render all missing fields (AWA, TWA) and add corresponding assets
 - [o] Packaging, including assets
 - [o] Naming things! Choose appropriate and sweet name for the Python package.

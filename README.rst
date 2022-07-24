@@ -7,8 +7,8 @@ NMEA instrumentation panel
 About
 *****
 
-An instrumentation panel to display NMEA telemetry data received via UDP port
-10110 over Wi-Fi.
+Software to drive an instrumentation panel for displaying NMEA telemetry data
+received via UDP port 10110 over Wi-Fi.
 
 
 .. note::
@@ -66,14 +66,14 @@ GUI::
     # Display demo data in preview application, single-shot.
     nmea-kindle-panel ui --source=demo:// --display=viewer
 
+    # Display demo data on the screen, using the `eips` program, in landscape orientation.
+    nmea-kindle-panel ui --source=demo:// --display=eips --landscape
+
     # Display demo data on the user interface, using Pyglet.
     nmea-kindle-panel ui --source=demo:// --display=pyglet
 
     # Display demo data on the user interface, using SDL.
     nmea-kindle-panel ui --source=demo:// --display=sdl
-
-    # Display demo data on the user interface, using EIPS.
-    nmea-kindle-panel ui --source=demo:// --display=eips
 
 An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
 
