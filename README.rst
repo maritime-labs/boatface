@@ -1,31 +1,46 @@
-#################
-NMEA Kindle panel
-#################
+##########################
+NMEA instrumentation panel
+##########################
 
 
 *****
 About
 *****
 
-The `Amazon Kindle`_ is an `electronic ink`_ e-book device, perfectly suitable
-for building an instrumentation panel to display NMEA telemetry data received
-via UDP port 10110 over Wi-Fi.
+An instrumentation panel to display NMEA telemetry data received via UDP port
+10110 over Wi-Fi.
 
 
-********
+.. note::
+
+    Please note this is ALPHA quality software.
+
+    - Many functionalities still need to be implemented.
+    - There might be dragons.
+
+
 Features
-********
+========
 
 - Receive and parse NMEA sentences
 - Render user interface as PIL image
-- Display user interface on different backends: PNG, `pyglet`_, `PySDL2`_, `eips`_
+- Display user interface on different backends: `PNG`_, `pyglet`_, `PySDL2`_, `eips`_
+
+Device support
+==============
+
+- Desktop: Linux, macOS, Windows
+- e-book devices using `electronic ink`_ displays:
+  `Amazon Kindle`_, `Kobo eReader`_, `Tolino eReader`_
 
 
 *****
 Setup
 *****
 
-Currently, the package should be installed in development mode.
+Currently, the package should be installed in development mode. We recommend to
+use a Python virtualenv, ``make test`` will automatically create one, within the
+``.venv`` directory.
 
 ::
 
@@ -116,10 +131,13 @@ The project is licensed under the terms of the GNU AGPL license.
 .. _eips: https://wiki.mobileread.com/wiki/Eips
 .. _electronic ink: https://en.wikipedia.org/wiki/E_Ink
 .. _FBInk: https://github.com/NiLuJe/FBInk
+.. _Kobo eReader: https://en.wikipedia.org/wiki/Kobo_eReader
 .. _OpenCPN: https://opencpn.org/
 .. _OpenPlotter: https://open-boat-projects.org/en/openplotter/
+.. _PNG: https://en.wikipedia.org/wiki/Portable_Network_Graphics
 .. _preflight checks: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/preflight.rst
 .. _production: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/production.rst
 .. _pyglet: https://pyglet.readthedocs.io/
 .. _PySDL2: https://pysdl2.readthedocs.io/
 .. _SignalK: https://github.com/SignalK/signalk-server
+.. _Tolino eReader: https://de.wikipedia.org/wiki/Tolino
