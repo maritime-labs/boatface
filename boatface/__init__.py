@@ -6,7 +6,10 @@ __appname__ = "boatface"
 __apptitle__ = "Maritime Labs Boatface"
 
 
-from importlib.metadata import PackageNotFoundError, version  # noqa
+try:
+    from importlib.metadata import PackageNotFoundError, version  # noqa
+except ImportError:
+    from importlib_metadata import PackageNotFoundError, version  # noqa
 
 try:
     __version__ = version(__appname__)
