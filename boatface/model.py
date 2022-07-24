@@ -93,7 +93,7 @@ class DisplayBackend(Enum):
 
     @classmethod
     def get_implementer(cls, backend):
-        from nmea_kindle_panel.app import EipsApplication, PygletApplication, SDLApplication, ViewerApplication
+        from boatface.app import EipsApplication, PygletApplication, SDLApplication, ViewerApplication
 
         if backend == cls.VIEWER:
             return ViewerApplication

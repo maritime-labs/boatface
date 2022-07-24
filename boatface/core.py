@@ -6,7 +6,7 @@ import logging
 import asyncio_dgram
 import pynmea2
 
-from nmea_kindle_panel.util import nmea_asdict
+from boatface.util import nmea_asdict
 
 logger = logging.getLogger(__name__)
 

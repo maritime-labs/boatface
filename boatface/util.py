@@ -91,4 +91,4 @@ def nmea_asdict(sentence: NMEASentence) -> t.Dict:
 
 
 def get_asset_path(filename):
-    return pkg_resources.resource_filename("nmea_kindle_panel.assets", filename)
+    return pkg_resources.resource_filename("boatface.assets", filename)

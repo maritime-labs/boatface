@@ -6,9 +6,9 @@ import sys
 
 import click
 
-from nmea_kindle_panel.core import UdpNmeaMessageReceiver
-from nmea_kindle_panel.model import DataValues, DisplayBackend
-from nmea_kindle_panel.util import EnumChoice, make_sync, setup_logging
+from boatface.core import UdpNmeaMessageReceiver
+from boatface.model import DataValues, DisplayBackend
+from boatface.util import EnumChoice, make_sync, setup_logging
 
 logger = logging.getLogger(__name__)
 
