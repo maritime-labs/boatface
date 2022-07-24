@@ -1,6 +1,6 @@
-##########################
-NMEA instrumentation panel
-##########################
+######################
+Maritime Labs Boatface
+######################
 
 
 *****
@@ -37,16 +37,13 @@ Device support
 *****
 Setup
 *****
-
-Currently, the package should be installed in development mode. We recommend to
-use a Python virtualenv, ``make test`` will automatically create one, within the
-``.venv`` directory.
-
 ::
 
-    git clone git@git.cicer.de:karatefish/nmea-kindle-panel.git
-    cd nmea-kindle-panel
-    make test
+    pip install --upgrade boatface
+
+To install the latest development version from the repository, invoke::
+
+    pip install --upgrade git+https://github.com/maritime-labs/boatface
 
 
 *****
@@ -59,21 +56,21 @@ Terminal::
     calypso-anemometer fake --subscribe --rate=hz_8 --target=udp+broadcast+nmea0183://255.255.255.255:10110
 
     # Listen on the network for NMEA-0183 messages and display them on the terminal.
-    nmea-kindle-panel log --source=udp+broadcast+nmea0183://0.0.0.0:10110
+    boatface log --source=udp+broadcast+nmea0183://0.0.0.0:10110
 
 GUI::
 
     # Display demo data in preview application, single-shot.
-    nmea-kindle-panel ui --source=demo:// --display=viewer
+    boatface ui --source=demo:// --display=viewer
 
     # Display demo data on the screen, using the `eips` program, in landscape orientation.
-    nmea-kindle-panel ui --source=demo:// --display=eips --landscape
+    boatface ui --source=demo:// --display=eips --landscape
 
     # Display demo data on the user interface, using Pyglet.
-    nmea-kindle-panel ui --source=demo:// --display=pyglet
+    boatface ui --source=demo:// --display=pyglet
 
     # Display demo data on the user interface, using SDL.
-    nmea-kindle-panel ui --source=demo:// --display=sdl
+    boatface ui --source=demo:// --display=sdl
 
 An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
 
@@ -81,14 +78,11 @@ An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
 
 More options::
 
-    # Enable verbose output
-    nmea-kindle-panel --verbose ui --source=demo:// --display=pyglet
-
-
-
 ****************
 Acknowledgements
 ****************
+    # Enable verbose output.
+    boatface --verbose ui --source=demo:// --display=pyglet
 
 - Thanks a stack to Holger Marseille for creating the user interface artwork, for
   conceiving the core rendering routines, and for providing general guidance and vision.
@@ -97,6 +91,11 @@ Acknowledgements
 *******************
 Project information
 *******************
+
+Etymology
+=========
+
+In honour of `Boaty McBoatface`_.
 
 Contributions
 =============
@@ -115,9 +114,9 @@ you should be ready to start hacking.
 Resources
 =========
 
-- `Source code repository <https://github.com/daq-tools/nmea-kindle-panel>`_
-- `Documentation <https://github.com/daq-tools/nmea-kindle-panel/blob/main/README.rst>`_
-- `Python Package Index (PyPI) <https://pypi.org/project/nmea-kindle-panel/>`_
+- `Source code repository <https://github.com/maritime-labs/boatface>`_
+- `Documentation <https://github.com/maritime-labs/boatface/blob/main/README.rst>`_
+- `Python Package Index (PyPI) <https://pypi.org/project/boatface/>`_
 
 License
 =======
@@ -127,7 +126,9 @@ The project is licensed under the terms of the GNU AGPL license.
 
 
 .. _Amazon Kindle: https://en.wikipedia.org/wiki/Amazon_Kindle
-.. _development sandbox: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/sandbox.rst
+.. _Boaty McBoatface: https://en.wikipedia.org/wiki/Boaty_McBoatface
+.. _create an issue: https://github.com/maritime-labs/boatface/issues
+.. _development sandbox: https://github.com/maritime-labs/boatface/blob/main/doc/sandbox.rst
 .. _eips: https://wiki.mobileread.com/wiki/Eips
 .. _electronic ink: https://en.wikipedia.org/wiki/E_Ink
 .. _FBInk: https://github.com/NiLuJe/FBInk
@@ -135,8 +136,8 @@ The project is licensed under the terms of the GNU AGPL license.
 .. _OpenCPN: https://opencpn.org/
 .. _OpenPlotter: https://open-boat-projects.org/en/openplotter/
 .. _PNG: https://en.wikipedia.org/wiki/Portable_Network_Graphics
-.. _preflight checks: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/preflight.rst
-.. _production: https://github.com/daq-tools/nmea-kindle-panel/blob/main/doc/production.rst
+.. _preflight checks: https://github.com/maritime-labs/boatface/blob/main/doc/preflight.rst
+.. _production: https://github.com/maritime-labs/boatface/blob/main/doc/production.rst
 .. _pyglet: https://pyglet.readthedocs.io/
 .. _PySDL2: https://pysdl2.readthedocs.io/
 .. _SignalK: https://github.com/SignalK/signalk-server

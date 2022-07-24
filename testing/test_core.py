@@ -1,4 +1,4 @@
-from nmea_kindle_panel.core import UdpNmeaMessageReceiver
+from boatface.core import UdpNmeaMessageReceiver
 
 
 def test_receiver():
