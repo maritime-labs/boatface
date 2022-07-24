@@ -44,8 +44,6 @@ TYPE_TW_X = 562
 TYPE_TWA_Y = 307
 TYPE_TWS_Y = 707
 
-# Misc
-EMPTY_VALUE = "-"
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +54,6 @@ class FrameRenderer:
         self.IMAGEFILE_MAIN = get_asset_path("main.png")
         self.IMAGEFILE_AWA = get_asset_path("awa.png")
         self.IMAGEFILE_TWA = get_asset_path("twa.png")
-        self.IMAGEFILE_HOMESCREEN = get_asset_path("homescreen.png")
 
         self.image = None
         self.canvas = None
@@ -97,7 +94,7 @@ class FrameRenderer:
 
     def draw_wind(self, values: RenderValues):
         self.canvas.text(((IMG_W / 4), TYPE_Y_2), values.hdg, font=FONT_MED, align="center", fill=FNT_CLR, anchor="mb")
-        if values.awa != EMPTY_VALUE:
+        if values.awa != RenderValues.EMPTY_VALUE:
             # show clock hand of awa value
             # also write value *-1 since value is signed for image.paste
             awa_image = Image.open(self.IMAGEFILE_AWA)
@@ -106,7 +103,7 @@ class FrameRenderer:
                 awa_image, (int(WIND_X - awa_image.width / 2), int(WIND_Y - awa_image.height / 2)), mask=awa_image
             )
 
-        if values.twa != EMPTY_VALUE:
+        if values.twa != RenderValues.EMPTY_VALUE:
             twa_image = Image.open(self.IMAGEFILE_TWA)
             twa_image = twa_image.rotate(float(values.twa) * -1, resample=Image.BICUBIC, expand=True)
             self.image.paste(
