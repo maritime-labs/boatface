@@ -11,8 +11,9 @@ Goals: Separation of concerns, Modularization, Python asyncio, Desktop compatibi
 
 - [x] UDP receiving
 - [x] Demo: Rendering, one-shot
-- [o] Demo: Rendering, continuously
-- [o] CLI access to demo modes
+- [x] Display subsystem
+- [x] Demo: Rendering, continuously
+- [x] CLI access to demo modes
 - [o] Connect data receiver with display
 - [o] Increase efficiency by loading assets only once
 - [o] Render all missing fields (AWA, TWA) and add corresponding assets
