@@ -16,6 +16,13 @@ setup(
     long_description=README,
     download_url="https://pypi.org/project/nmea-kindle-panel/",
     packages=find_packages(),
+    include_package_data=True,
+    package_data={
+        "nmea_kindle_panel": [
+            "assets/*.png",
+            "assets/*.otf",
+        ],
+    },
     license="AGPL-3.0, EUPL-1.2",
     keywords=[
         "display",
