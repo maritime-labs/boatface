@@ -6,9 +6,8 @@ import sys
 
 import click
 
-from nmea_kindle_panel.app import DisplayBackend
 from nmea_kindle_panel.core import UdpNmeaMessageReceiver
-from nmea_kindle_panel.model import DataValues
+from nmea_kindle_panel.model import DataValues, DisplayBackend
 from nmea_kindle_panel.util import EnumChoice, make_sync, setup_logging
 
 logger = logging.getLogger(__name__)

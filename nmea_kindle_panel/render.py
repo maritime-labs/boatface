@@ -137,7 +137,7 @@ if __name__ == "__main__":
     """
     Synopsis::
 
-        python -m nmea_kindle_panel.display
+        python -m nmea_kindle_panel.render
     """
     setup_logging(level=logging.DEBUG)
     demo_single_png()
