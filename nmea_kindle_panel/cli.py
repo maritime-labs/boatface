@@ -51,7 +51,7 @@ async def log(ctx, source: str):
 @make_sync
 async def ui(ctx, source: str, display: DisplayBackend, landscape: bool):
     if source == "demo://":
-        data = DataValues(cog=42.42, dbt=84.84, sog=4.3)
+        data = DataValues(cog=42.42, dbt=84.84, sog=4.3, hdg=5.82, awa=42, aws=4.2, twa=170, tws=6.2)
     else:
         raise NotImplementedError(f"Selected data source {source} not implemented")
 

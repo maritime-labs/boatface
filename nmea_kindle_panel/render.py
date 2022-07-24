@@ -126,7 +126,7 @@ class FrameRenderer:
 
 
 def demo_single_png():
-    data = DataValues(cog=42.42, dbt=84.84, sog=4.3)
+    data = DataValues(cog=42.42, dbt=84.84, sog=4.3, hdg=5.82, awa=42, aws=4.2, twa=170, tws=6.2)
     tplvars = RenderValues.from_data(data)
     renderer = FrameRenderer()
     image = renderer.render(tplvars)
