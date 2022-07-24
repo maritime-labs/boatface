@@ -1,2 +1,3 @@
 include CHANGES.rst LICENSE README.rst
 recursive-include doc *.rst
+recursive-include nmea_kindle_panel *.png *.otf
