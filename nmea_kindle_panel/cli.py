@@ -18,11 +18,14 @@ logger = logging.getLogger(__name__)
 @click.option("--debug", is_flag=True, required=False, help="Enable debug messages.")
 @click.pass_context
 def cli(ctx, verbose, debug):
-    setup_logging(level=logging.DEBUG)
+    log_level = logging.INFO
+    if verbose or debug:
+        log_level = logging.DEBUG
+    setup_logging(level=log_level)
 
 
 @click.command()
-@click.option("--source", type=str, required=False, help="Receive telemetry data from source")
+@click.option("--source", type=str, required=True, help="Receive telemetry data from source.")
 @click.pass_context
 @make_sync
 async def log(ctx, source: str):

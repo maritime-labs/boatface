@@ -8,8 +8,8 @@ About
 *****
 
 The `Amazon Kindle`_ is an `electronic ink`_ e-book device, perfectly suitable
-for building a panel to display NMEA telemetry data received via UDP port 10110
-over Wi-Fi.
+for building an instrumentation panel to display NMEA telemetry data received
+via UDP port 10110 over Wi-Fi.
 
 
 ********
@@ -17,21 +17,16 @@ Features
 ********
 
 - Receive and parse NMEA sentences
-- Render display bitmap as PNG
+- Render user interface as PIL image
 
 
 *****
 Setup
 *****
+
+Currently, the package should be installed in development mode.
+
 ::
-
-    pip install --upgrade nmea-kindle-panel
-
-To install the latest development version from the repository, invoke::
-
-    pip install --upgrade git+git@git.cicer.de:karatefish/nmea-kindle-panel.git
-
-Sandbox::
 
     git clone git@git.cicer.de:karatefish/nmea-kindle-panel.git
     cd nmea-kindle-panel
@@ -42,23 +37,29 @@ Sandbox::
 Usage
 *****
 
-::
+Terminal::
 
     # Submit telemetry messages in NMEA-0183 format to UDP broadcast.
     calypso-anemometer fake --subscribe --rate=hz_8 --target=udp+broadcast+nmea0183://255.255.255.255:10110
 
-    # Listen on the network for NMEA-0183 messages.
+    # Listen on the network for NMEA-0183 messages and display them on the terminal.
     nmea-kindle-panel log --source=udp+broadcast+nmea0183://0.0.0.0:10110
 
-    # Run demo user interface
-    python -m nmea_kindle_panel.display
+GUI::
 
-    # Start user interface service. (not implemented yet)
-    nmea-kindle-panel ui-service --source=udp+broadcast+nmea0183://0.0.0.0:10110
+
+
+
 
 An example NMEA-0183 sentence emitted by ``calypso-anemometer`` is::
 
     $IIVWR,154.0,L,11.06,N,5.69,M,20.48,K*65
+
+More options::
+
+    # Enable verbose output
+    nmea-kindle-panel --verbose ui --source=demo:// --display=pyglet
+
 
 
 ****************
@@ -97,7 +98,7 @@ Resources
 License
 =======
 
-The project is licensed under the terms of the AGPL license.
+The project is licensed under the terms of the GNU AGPL license.
 
 
 
