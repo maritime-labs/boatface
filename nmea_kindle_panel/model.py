@@ -16,13 +16,22 @@ class DataValues:
     Data structure for holding ingress telemetry data, i.e. before rendering.
     """
 
+    # course over ground. 0-360 degrees. What the boat really does, including all drift.
     cog: Optional[float] = None
+    # speed over ground. 0-x knots.
     sog: Optional[float] = None
+    # depth below transducer. 0-`MAX_DEPTH` meters.
     dbt: Optional[float] = None
+    # heading. 0-360 degrees. Where the compass points to, without GPS.
     hdg: Optional[float] = None
+
+    # apparent wind angle
     awa: Optional[float] = None
+    # apparent wind speed
     aws: Optional[float] = None
+    # true wind angle
     twa: Optional[float] = None
+    # true wind speed
     tws: Optional[float] = None
 
 
