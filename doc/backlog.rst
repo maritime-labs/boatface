@@ -16,9 +16,7 @@ Goals: Separation of concerns, Modularization, Python asyncio, Desktop compatibi
 - [x] CLI access to demo modes
 - [x] Document ``--landscape`` option
 - [x] Demo: Render all missing fields (AWA, TWA) and add corresponding assets
-- [o] Packaging, including assets
-- [o] Naming things! Choose appropriate and sweet name for the Python package.
-- [o] Release 0.1.0
+- [o] Package building, including assets
 
 
 ***********
@@ -31,3 +29,10 @@ Iteration 1
 
   - dbt>=10 auf eine stelle hinter dem komma
   - dbt>=20 keine nachkommastelle
+- [o] Naming things! Choose appropriate and sweet name for the Python package.
+
+  - NMEA instrumentation panel
+  - NMEA-Instrumententafel
+  - NMEA-Instrumentierungstafel
+  - NMEA-Instrumentenbrett
+  - NMEA-Bedienfeld
