@@ -66,11 +66,11 @@ Setup
 *****
 ::
 
-    pip install --upgrade boatface
+    pip install --upgrade boatface[ui]
 
 To install the latest development version from the repository, invoke::
 
-    pip install --upgrade git+https://github.com/maritime-labs/boatface
+    pip install --upgrade git+https://github.com/maritime-labs/boatface#egg=boatface[ui]
 
 
 *****
@@ -114,16 +114,16 @@ More options::
 Other projects
 **************
 
-- SignalK Instrument package
+- SignalK Instrument package:
   https://github.com/mxtommy/Kip
 
-- Kindle eink UI for SignalK data
+- Kindle eink UI for SignalK data:
   https://github.com/ieb/signalk-eink
 
-- iKommunicate-Kindle
+- iKommunicate-Kindle:
   https://github.com/tkurki/sk-on-kindle
 
-- Using Tolino eBook Reader as Display for SignalK
+- Using Tolino eBook reader as display for SignalK:
   https://github.com/koileLab/SignalkTolino
 
 
@@ -175,8 +175,6 @@ The project is licensed under the terms of the GNU AGPL license.
 .. _OpenCPN: https://opencpn.org/
 .. _OpenPlotter: https://open-boat-projects.org/en/openplotter/
 .. _PNG: https://en.wikipedia.org/wiki/Portable_Network_Graphics
-.. _preflight checks: https://github.com/maritime-labs/boatface/blob/main/doc/preflight.rst
-.. _production: https://github.com/maritime-labs/boatface/blob/main/doc/production.rst
 .. _pyglet: https://pyglet.readthedocs.io/
 .. _PySDL2: https://pysdl2.readthedocs.io/
 .. _SignalK: https://github.com/SignalK/signalk-server

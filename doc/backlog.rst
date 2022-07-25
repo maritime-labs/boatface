@@ -20,6 +20,8 @@ Goals: Separation of concerns, Modularization, Framework layout, Python asyncio,
 - [x] Naming things. ``boatface`` it is.
 - [x] Docs: Install/sandbox, Etymology
 - [x] CI/GHA setup
+- [x] Release 0.0.0
+- [o] More software tests
 - [o] Connect data receiver with display
 - [o] Release 0.1.0
 
@@ -30,6 +32,11 @@ Iteration 1
 ***********
 
 Goals: Get all the details right and make things real
+
+- [o] Conform to NMEA-0183 standard sentences
+
+  - https://github.com/SignalK/nmea0183-signalk
+  - https://gpsd.gitlab.io/gpsd/NMEA.html#_nmea_standard_sentences
 
 - [o] DBT vs. DBK
 
