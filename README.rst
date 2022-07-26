@@ -46,6 +46,11 @@ NMEA-0183 telemetry data is received on UDP port 10110.
     - There might be dragons.
 
 
+Screenshot
+==========
+
+.. figure:: https://user-images.githubusercontent.com/453543/181004242-49231c0d-8c2c-4470-81d5-8d882b073736.png
+
 Features
 ========
 

@@ -5,7 +5,7 @@ Boatface changelog
 
 in progress
 ===========
-
+- Add screenshot
 
 2022-07-25 0.0.0
 ================
