@@ -5,7 +5,7 @@ Boatface changelog
 
 in progress
 ===========
-
+- Add more software test cases
 
 2022-07-26 0.0.1
 ================
