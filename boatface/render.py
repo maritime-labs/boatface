@@ -122,7 +122,7 @@ class FrameRenderer:
         )
 
 
-def demo_single_png():
+def demo_single_png():  # pragma: no cover
     data = DataValues(cog=42.42, dbt=84.84, sog=4.3, hdg=5.82, awa=42, aws=4.2, twa=170, tws=6.2)
     tplvars = RenderValues.from_data(data)
     renderer = FrameRenderer()
@@ -130,7 +130,7 @@ def demo_single_png():
     image.show()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     """
     Synopsis::
 
