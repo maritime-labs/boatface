@@ -60,7 +60,6 @@ async def ui(ctx, source: str, display: DisplayBackend, landscape: bool):
         logger.warning(f"Option --landscape has no effect with display backend {display}")
 
     display_backend_class = DisplayBackend.get_implementer(display)
-    print("display_backend_class:", display_backend_class)
 
     app = display_backend_class(data=data, landscape=landscape)
     app.run()
