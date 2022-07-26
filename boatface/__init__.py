@@ -8,7 +8,7 @@ __apptitle__ = "Maritime Labs Boatface"
 
 try:
     from importlib.metadata import PackageNotFoundError, version  # noqa
-except ImportError:
+except ImportError:  # pragma: no cover
     from importlib_metadata import PackageNotFoundError, version  # noqa
 
 try:
