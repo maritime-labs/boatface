@@ -8,7 +8,7 @@ README = open(os.path.join(here, "README.rst")).read()
 
 setup(
     name="boatface",
-    version="0.0.1",
+    version="0.0.2",
     author="Holger Marseille",
     author_email="ml@argonauta.studio",
     maintainer="Andreas Motl",
