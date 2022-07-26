@@ -22,7 +22,9 @@ Goals: Separation of concerns, Modularization, Framework layout, Python asyncio,
 - [x] CI/GHA setup
 - [x] Release 0.0.0
 - [o] More software tests
+- [o] Render PNG to file, use this for testing
 - [o] Connect data receiver with display
+- [o] ``boatface/render.py:108``: ``DeprecationWarning: BICUBIC is deprecated and will be removed in Pillow 10 (2023-07-01). Use Resampling.BICUBIC instead.``
 - [o] Release 0.1.0
 
 
