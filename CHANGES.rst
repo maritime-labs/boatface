@@ -5,6 +5,7 @@ Boatface changelog
 
 in progress
 ===========
+- Connect data receiver domain with display domain
 
 2022-07-26 0.0.2
 ================

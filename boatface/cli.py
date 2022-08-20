@@ -4,10 +4,11 @@
 # License: GNU Affero General Public License, Version 3
 import logging
 import sys
+import threading
 
 import click
 
-from boatface.core import UdpNmeaMessageReceiver
+from boatface.core import UdpNmeaMessageReceiver, UdpNmeaMessageForwarder
 from boatface.model import DataValues, DisplayBackend
 from boatface.util import EnumChoice, make_sync, setup_logging
 
@@ -51,18 +52,28 @@ async def log(ctx, source: str):
 @click.pass_context
 @make_sync
 async def ui(ctx, source: str, display: DisplayBackend, landscape: bool):
-    if source == "demo://":
-        data = DataValues(cog=42.42, dbt=84.84, sog=4.3, hdg=5.82, awa=42, aws=4.2, twa=170, tws=6.2)
-    else:
-        raise NotImplementedError(f"Selected data source {source} not implemented")
-
     if landscape and display not in [DisplayBackend.VIEWER, DisplayBackend.EIPS]:
         logger.warning(f"Option --landscape has no effect with display backend {display}")
 
     display_backend_class = DisplayBackend.get_implementer(display)
 
-    app = display_backend_class(data=data, landscape=landscape)
+    if source == "demo://":
+        data = DataValues(cog=42.42, dbt=84.84, sog=4.3, hdg=5.82, awa=42, aws=4.2, twa=170, tws=6.2)
+        app = display_backend_class(data=data, landscape=landscape)
+    else:
+        """
+        receiver = UdpNmeaMessageReceiver()
+        async for message in receiver.read():
+            logger.info(f"Decoded message: {dict(message)}")
+        # raise NotImplementedError(f"Selected data source {source} not implemented")
+        """
+        forwarder = UdpNmeaMessageForwarder()
+        forwarder.start()
+        app = display_backend_class(queue=forwarder.queue, landscape=landscape)
+
+    #t = threading.Thread(target=app.run)
     app.run()
+    #t.start()
 
 
 cli.add_command(log, name="log")

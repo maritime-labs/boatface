@@ -3,6 +3,7 @@
 # (c) 2022 Andreas Motl <andreas.motl@panodata.org>
 # License: GNU Affero General Public License, Version 3
 import logging
+import queue
 import subprocess
 import tempfile
 import time
@@ -35,10 +36,27 @@ class BaseApplication:
     WIDTH = IMG_W
     HEIGHT = IMG_H
 
-    def __init__(self, data: Optional[DataValues] = None, landscape: Optional[bool] = False):
+    def __init__(self, data: Optional[DataValues] = None, queue: Optional = None, landscape: Optional[bool] = False):
         self.data = data
+        self.queue = queue
         self.landscape = landscape
         self.renderer = FrameRenderer(landscape=self.landscape)
+        #print("queue:", queue)
+
+    def pull_data(self):
+        print("1")
+        if self.queue is None:
+            return
+        print("2")
+        try:
+            print("3")
+            self.data = self.queue.get(block=False)
+            print("4")
+        except queue.Empty:
+            print("5")
+            pass
+        print("6")
+        print("pull_data:", self.data)
 
     @abstractmethod
     def run(self):
@@ -128,6 +146,10 @@ class PygletApplication(BaseApplication):
             - Load image as UI toolkit resource.
             - Display in application window.
             """
+            self.pull_data()
+            if self.data is None:
+                return
+            print("self.data:", self.data)
             logger.debug("Rendering frame")
             tplvars = RenderValues.from_data(self.data)
             image_buffer = self.renderer.render_png(tplvars)
