@@ -119,6 +119,9 @@ More options::
 Other projects
 **************
 
+- SignalK Instrument panel:
+  https://github.com/SignalK/instrumentpanel
+
 - SignalK Instrument package:
   https://github.com/mxtommy/Kip
 
